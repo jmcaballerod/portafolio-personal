@@ -7,15 +7,13 @@ const navItems = [
 ---
 
 <header class="bg-background border-b border-gray-200">
-  <div class="max-w-5xl mx-auto px-6 py-6">
+  <div class="max-w-7xl mx-auto px-6 py-6">
     <nav class="flex items-center justify-between">
-      <!-- Logo/Nombre -->
-      <a href="/" class="text-2xl font-bold text-text hover:opacity-80 transition-opacity">
-        Tu Nombre
-      </a>
-
-      <!-- Navegación Desktop -->
-      <div class="hidden md:flex items-center gap-8">
+      <!-- Espaciador invisible izquierdo para centrar -->
+      <div class="flex-1"></div>
+      
+      <!-- Navegación centrada -->
+      <div class="flex items-center gap-8">
         {navItems.map((item) => (
           <a 
             href={item.href}
@@ -24,23 +22,16 @@ const navItems = [
             {item.name}
           </a>
         ))}
-        
+      </div>
+      
+      <!-- Botón derecha -->
+      <div class="flex-1 flex justify-end">
         <a 
           href="/contacto"
           class="bg-accent text-white px-5 py-2.5 rounded-lg font-medium hover:opacity-90 transition-opacity"
         >
           Contáctame
         </a>
-      </div>
-
-      <!-- Navegación Mobile (opcional para después) -->
-      <div class="md:hidden">
-        <button class="text-text">
-          <!-- Icono hamburguesa simple -->
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
       </div>
     </nav>
   </div>

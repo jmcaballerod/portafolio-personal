@@ -1,0 +1,41 @@
+---
+// Puentes visuales hacia las secciones principales
+const sections = [
+  {
+    title: "Trabajo",
+    description: "Proyectos y casos donde he ayudado a empresas a crecer.",
+    href: "/trabajo",
+    cta: "Ver proyectos"
+  },
+  {
+    title: "Writing",
+    description: "Reflexiones sobre estrategia, crecimiento y cómo pienso sobre negocios digitales.",
+    href: "/writing",
+    cta: "Leer artículos"
+  }
+];
+---
+
+<section class="max-w-5xl mx-auto px-6 py-20">
+  <div class="grid md:grid-cols-2 gap-8">
+    {sections.map((section) => (
+      <a 
+        href={section.href}
+        class="group block p-8 border border-gray-200 rounded-lg hover:border-accent transition-all"
+      >
+        <h3 class="text-2xl font-bold text-text mb-3 group-hover:text-accent transition-colors">
+          {section.title}
+        </h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          {section.description}
+        </p>
+        <span class="inline-flex items-center text-accent font-medium">
+          {section.cta}
+          <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </span>
+      </a>
+    ))}
+  </div>
+</section>
