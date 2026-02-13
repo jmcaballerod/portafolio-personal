@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Obtener todos los artículos publicados, ordenados por fecha (más reciente primero)
+const posts = (await getCollection('writing'))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Writing - Miguel Caballero">
+  <div class="max-w-4xl mx-auto px-6 py-20">
+    <!-- Header de la sección -->
+    <div class="mb-16">
+      <h1 class="text-5xl md:text-6xl font-bold text-text mb-4">
+        Writing
+      </h1>
+      <p class="text-xl text-gray-600">
+        Reflexiones sobre estrategia, crecimiento y cómo pienso sobre negocios digitales.
+      </p>
+    </div>
+
+    <!-- Lista de artículos -->
+    <div class="space-y-12">
+      {posts.map((post) => (
+        <article class="group">
+          <a href={`/writing/${post.slug}`} class="block">
+            <time class="text-sm text-gray-500 mb-2 block">
+              {new Date(post.data.date).toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+            <h2 class="text-3xl font-bold text-text mb-3 group-hover:text-accent transition-colors">
+              {post.data.title}
+            </h2>
+            <p class="text-gray-600 text-lg leading-relaxed">
+              {post.data.description}
+            </p>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
